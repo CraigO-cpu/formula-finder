@@ -1,36 +1,47 @@
 function findFormula() {
     const input = document.getElementById('userInput').value.toLowerCase().trim();
-    if (!input) {
-      document.getElementById('results').innerHTML = '<p>Please enter a description.</p>';
+    const category = document.getElementById('categoryFilter').value;
+  
+    let filteredFormulas = formulas;
+    if (category !== "All") {
+      filteredFormulas = formulas.filter(formula => formula.category === category);
+    }
+  
+    if (!input && category === "All") {
+      document.getElementById('results').innerHTML = '<p>Please enter a description or select a category.</p>';
       return;
     }
   
     const stopWords = ['i', 'need', 'to', 'in', 'a', 'the', 'for', 'with', 'of', 'and', 'is', 'are'];
-    let tokens = input.split(/\s+/).filter(word => !stopWords.includes(word));
+    let tokens = input ? input.split(/\s+/).filter(word => !stopWords.includes(word)) : [];
     tokens = tokens.map(word => synonyms[word] || word);
   
-    const scoredFormulas = formulas.map(formula => {
+    const scoredFormulas = filteredFormulas.map(formula => {
       let score = 0;
-      tokens.forEach((token, index) => {
-        if (formula.keywords[token]) {
-          score += formula.keywords[token];
-          score += formula.keywords[token] * (1 - index / tokens.length) * 0.2;
-          if (formula.category === "Conditional Formatting" && (token === "highlight" || token === "notification")) {
-            score += 0.3; // Boost for conditional formatting
+      if (tokens.length > 0) {
+        tokens.forEach((token, index) => {
+          if (formula.keywords[token]) {
+            score += formula.keywords[token];
+            score += formula.keywords[token] * (1 - index / tokens.length) * 0.2;
+            if (formula.category === "Conditional Formatting" && (token === "highlight" || token === "notification")) {
+              score += 0.3;
+            }
           }
-        }
-      });
+        });
+      } else {
+        score = 1; // Show all formulas in category if no input
+      }
       return { formula, score };
     });
   
     const results = scoredFormulas
-      .filter(item => item.score > 0.5)
+      .filter(item => item.score > 0.5 || (category !== "All" && !input))
       .sort((a, b) => b.score - a.score)
-      .slice(0, 3);
+      .slice(0, 5);
   
     const resultsDiv = document.getElementById('results');
     if (results.length === 0) {
-      resultsDiv.innerHTML = '<p>No matching formulas found. Try rephrasing your description.</p>';
+      resultsDiv.innerHTML = '<p>No matching formulas found. Try rephrasing or changing the category.</p>';
       return;
     }
   
@@ -48,6 +59,10 @@ function findFormula() {
       `;
       resultsDiv.appendChild(card);
     });
+  }
+  
+  function filterByCategory() {
+    findFormula(); // Re-run search with current input and selected category
   }
   
   function copyToClipboard(text) {

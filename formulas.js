@@ -18,6 +18,23 @@ const formulas = [
       }
     },
     {
+      name: "SUMIFS",
+      category: "Math",
+      description: "Sums values that meet multiple criteria.",
+      sheets: "=SUMIFS(sum_range, criteria_range1, criterion1, [criteria_range2, criterion2, ...])",
+      excel: "=SUMIFS(sum_range, criteria_range1, criterion1, [criteria_range2, criterion2, ...])",
+      example: "Sum B1:B20 where A1:A20 > 50 and C1:C20 = \"Yes\": =SUMIFS(B1:B20, A1:A20, \">50\", C1:C20, \"Yes\")",
+      keywords: {
+        sum: 0.9,
+        add: 0.8,
+        total: 0.7,
+        multiple: 0.6,
+        criteria: 0.6,
+        condition: 0.5,
+        range: 0.4
+      }
+    },
+    {
       name: "COUNTIF",
       category: "Statistical",
       description: "Counts cells that meet a criterion.",
@@ -32,6 +49,21 @@ const formulas = [
         criterion: 0.5,
         condition: 0.5,
         range: 0.4
+      }
+    },
+    {
+      name: "MEDIAN",
+      category: "Statistical",
+      description: "Returns the median of a range of numbers.",
+      sheets: "=MEDIAN(range)",
+      excel: "=MEDIAN(range)",
+      example: "Find median of D1:D15: =MEDIAN(D1:D15)",
+      keywords: {
+        median: 0.9,
+        middle: 0.8,
+        numbers: 0.7,
+        range: 0.6,
+        statistical: 0.5
       }
     },
     {
@@ -52,6 +84,22 @@ const formulas = [
       }
     },
     {
+      name: "XLOOKUP",
+      category: "Lookup",
+      description: "Searches a range and returns a value from another range (Excel only, Sheets alternative: INDEX/MATCH).",
+      sheets: "Use INDEX/MATCH instead: =INDEX(return_range, MATCH(lookup_value, lookup_range, 0))",
+      excel: "=XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found], [match_mode], [search_mode])",
+      example: "Excel: Find value in A1:A20, return from B1:B20: =XLOOKUP(C1, A1:A20, B1:B20)",
+      keywords: {
+        lookup: 0.9,
+        search: 0.8,
+        find: 0.7,
+        value: 0.6,
+        advanced: 0.5,
+        range: 0.4
+      }
+    },
+    {
       name: "IF",
       category: "Logical",
       description: "Returns one value if a condition is true, another if false.",
@@ -68,6 +116,21 @@ const formulas = [
       }
     },
     {
+      name: "AND",
+      category: "Logical",
+      description: "Returns TRUE if all conditions are true.",
+      sheets: "=AND(logical1, [logical2, ...])",
+      excel: "=AND(logical1, [logical2, ...])",
+      example: "Check if A1 > 50 and B1 < 100: =AND(A1>50, B1<100)",
+      keywords: {
+        and: 0.9,
+        multiple: 0.8,
+        condition: 0.7,
+        logical: 0.6,
+        true: 0.5
+      }
+    },
+    {
       name: "AVERAGE",
       category: "Statistical",
       description: "Calculates the average of a range of numbers.",
@@ -78,7 +141,8 @@ const formulas = [
         average: 0.9,
         mean: 0.8,
         numbers: 0.7,
-        range: 0.6
+        range: 0.6,
+        statistical: 0.5
       }
     },
     {
@@ -97,6 +161,51 @@ const formulas = [
       }
     },
     {
+      name: "TEXT",
+      category: "Text",
+      description: "Formats a number or date as text.",
+      sheets: "=TEXT(value, format_text)",
+      excel: "=TEXT(value, format_text)",
+      example: "Format date in A1 as 'MMMM YYYY': =TEXT(A1, \"MMMM YYYY\")",
+      keywords: {
+        text: 0.9,
+        format: 0.8,
+        date: 0.7,
+        number: 0.6,
+        string: 0.5
+      }
+    },
+    {
+      name: "LEFT",
+      category: "Text",
+      description: "Extracts a specified number of characters from the start of a text string.",
+      sheets: "=LEFT(text, [num_chars])",
+      excel: "=LEFT(text, [num_chars])",
+      example: "Extract first 5 characters from A1: =LEFT(A1, 5)",
+      keywords: {
+        left: 0.9,
+        extract: 0.8,
+        text: 0.7,
+        characters: 0.6,
+        string: 0.5
+      }
+    },
+    {
+      name: "RIGHT",
+      category: "Text",
+      description: "Extracts a specified number of characters from the end of a text string.",
+      sheets: "=RIGHT(text, [num_chars])",
+      excel: "=RIGHT(text, [num_chars])",
+      example: "Extract last 4 characters from B1: =RIGHT(B1, 4)",
+      keywords: {
+        right: 0.9,
+        extract: 0.8,
+        text: 0.7,
+        characters: 0.6,
+        string: 0.5
+      }
+    },
+    {
       name: "TODAY",
       category: "Date",
       description: "Returns the current date.",
@@ -108,6 +217,22 @@ const formulas = [
         date: 0.8,
         current: 0.7,
         day: 0.6
+      }
+    },
+    {
+      name: "DATEDIF",
+      category: "Date",
+      description: "Calculates the difference between two dates in years, months, or days.",
+      sheets: "=DATEDIF(start_date, end_date, unit)",
+      excel: "=DATEDIF(start_date, end_date, unit)",
+      example: "Days between A1 and B1: =DATEDIF(A1, B1, \"D\")",
+      keywords: {
+        difference: 0.9,
+        date: 0.8,
+        days: 0.7,
+        months: 0.6,
+        years: 0.6,
+        calculate: 0.5
       }
     },
     {
@@ -123,6 +248,22 @@ const formulas = [
         financial: 0.7,
         interest: 0.6,
         rate: 0.5
+      }
+    },
+    {
+      name: "NPV",
+      category: "Financial",
+      description: "Calculates the net present value of an investment.",
+      sheets: "=NPV(rate, value1, [value2, ...])",
+      excel: "=NPV(rate, value1, [value2, ...])",
+      example: "NPV of cash flows in B1:B10 at 10% rate: =NPV(10%, B1:B10)",
+      keywords: {
+        npv: 0.9,
+        present: 0.8,
+        value: 0.7,
+        investment: 0.6,
+        financial: 0.5,
+        rate: 0.4
       }
     },
     {
@@ -162,35 +303,18 @@ const formulas = [
       }
     },
     {
-      name: "INDEX/MATCH",
-      category: "Lookup",
-      description: "Searches for a value and returns a value from another column in the same row.",
-      sheets: "=INDEX(return_range, MATCH(lookup_value, lookup_range, 0))",
-      excel: "=INDEX(return_range, MATCH(lookup_value, lookup_range, 0))",
-      example: "Find a value in A1:A20 and return from B1:B20: =INDEX(B1:B20, MATCH(C1, A1:A20, 0))",
+      name: "IFERROR",
+      category: "Logical",
+      description: "Returns a value if no error, otherwise an alternative value.",
+      sheets: "=IFERROR(value, [value_if_error])",
+      excel: "=IFERROR(value, [value_if_error])",
+      example: "Handle error in A1/B1: =IFERROR(A1/B1, \"Error\")",
       keywords: {
-        lookup: 0.9,
-        search: 0.8,
-        find: 0.7,
-        index: 0.6,
-        match: 0.6,
-        value: 0.5,
-        range: 0.4
-      }
-    },
-    {
-      name: "LEFT",
-      category: "Text",
-      description: "Extracts a specified number of characters from the start of a text string.",
-      sheets: "=LEFT(text, [num_chars])",
-      excel: "=LEFT(text, [num_chars])",
-      example: "Extract first 5 characters from A1: =LEFT(A1, 5)",
-      keywords: {
-        left: 0.9,
-        extract: 0.8,
-        text: 0.7,
-        characters: 0.6,
-        string: 0.5
+        error: 0.9,
+        handle: 0.8,
+        iferror: 0.7,
+        logical: 0.6,
+        value: 0.5
       }
     }
   ];
@@ -208,5 +332,11 @@ const formulas = [
     current: "today",
     notification: "highlight",
     format: "formatting",
-    overdue: "highlight"
+    overdue: "highlight",
+    middle: "median",
+    difference: "datedif",
+    calculate: "datedif",
+    payment: "pmt",
+    present: "npv",
+    handle: "iferror"
   };

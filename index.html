@@ -9,9 +9,20 @@
 <body>
   <header>
     <h1>Formula Finder for Google Sheets & Excel</h1>
-    <p>Describe your task, and I'll suggest the best formula!</p>
+    <p>Describe your task or select a category to find the best formula!</p>
   </header>
   <main>
+    <select id="categoryFilter" onchange="filterByCategory()">
+      <option value="All">All Categories</option>
+      <option value="Math">Math</option>
+      <option value="Statistical">Statistical</option>
+      <option value="Text">Text</option>
+      <option value="Date">Date</option>
+      <option value="Financial">Financial</option>
+      <option value="Logical">Logical</option>
+      <option value="Lookup">Lookup</option>
+      <option value="Conditional Formatting">Conditional Formatting</option>
+    </select>
     <textarea id="userInput" rows="4" placeholder="E.g., I need to sum numbers above 50 in a column"></textarea>
     <button onclick="findFormula()">Find Formula</button>
     <section id="results"></section>

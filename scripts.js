@@ -22,22 +22,22 @@ function findFormula() {
         tokens.forEach((token, index) => {
           if (formula.keywords[token]) {
             score += formula.keywords[token];
-            score += formula.keywords[token] * (1 - index / tokens.length) * 0.2;
+            score += formula.keywords[token] * (1 - index / tokens.length) * 0.15; // Reduced proximity boost
             if (formula.category === "Conditional Formatting" && (token === "highlight" || token === "notification")) {
               score += 0.3;
             }
           }
         });
       } else {
-        score = 1; // Show all formulas in category if no input
+        score = 1; // Show all in category if no input
       }
       return { formula, score };
     });
   
     const results = scoredFormulas
-      .filter(item => item.score > 0.5 || (category !== "All" && !input))
+      .filter(item => item.score > 0.4 || (category !== "All" && !input)) // Lowered threshold for more matches
       .sort((a, b) => b.score - a.score)
-      .slice(0, 5);
+      .slice(0, 10); // Increased limit for comprehensive results
   
     const resultsDiv = document.getElementById('results');
     if (results.length === 0) {
@@ -62,7 +62,7 @@ function findFormula() {
   }
   
   function filterByCategory() {
-    findFormula(); // Re-run search with current input and selected category
+    findFormula();
   }
   
   function copyToClipboard(text) {

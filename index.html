@@ -9,50 +9,44 @@
   <meta name="author" content="Your Name">
   <meta name="robots" content="index, follow">
   <link rel="stylesheet" href="styles.css">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7863118210811977"
-     crossorigin="anonymous"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- AdSense Verification Script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7863118210811977" crossorigin="anonymous"></script>
 </head>
 <body>
   <header>
     <h1>Formula Finder for Google Sheets & Excel</h1>
-    <p>Describe your task or select a category to find the perfect formula.</p>
+    <p>Describe your task or select a category to find the best formula!</p>
   </header>
-  <select id="categoryFilter">
-    <option value="">All Categories</option>
-    <option value="Math">Math</option>
-    <option value="Text">Text</option>
-    <option value="Date">Date</option>
-    <option value="Lookup">Lookup</option>
-    <option value="Logical">Logical</option>
-    <option value="Financial">Financial</option>
-    <option value="Statistical">Statistical</option>
-    <option value="Conditional Formatting">Conditional Formatting</option>
-  </select>
-  <textarea id="taskInput" placeholder="e.g., 'find text in a cell' or 'sum numbers above 50'"></textarea>
-  <button onclick="findFormulas()">Find Formulas</button>
-  <div id="results"></div>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7863118210811977"
-     crossorigin="anonymous"></script>
-<!-- Formula Finder Banner -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7863118210811977"
-     data-ad-slot="9281022824"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-       data-ad-slot="1234567890"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+  <main>
+    <select id="categoryFilter" onchange="filterByCategory()">
+      <option value="All">All Categories</option>
+      <option value="Math">Math</option>
+      <option value="Statistical">Statistical</option>
+      <option value="Text">Text</option>
+      <option value="Date">Date</option>
+      <option value="Financial">Financial</option>
+      <option value="Logical">Logical</option>
+      <option value="Lookup">Lookup</option>
+      <option value="Array">Array</option>
+      <option value="Database">Database</option>
+      <option value="Information">Information</option>
+      <option value="Conditional Formatting">Conditional Formatting</option>
+      <option value="Advanced">Advanced</option>
+    </select>
+    <textarea id="userInput" rows="4" placeholder="e.g., 'find text in a cell' or 'sum numbers above 50'"></textarea>
+    <button onclick="findFormula()">Find Formula</button>
+    <section id="results"></section>
+    <!-- AdSense Banner Ad -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-7863118210811977"
+         data-ad-slot="9281022824"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </main>
   <script src="formulas.js"></script>
   <script src="scripts.js"></script>
 </body>

@@ -1,5 +1,4 @@
 const formulas = [
-    // Math
     {
       name: "SUM",
       category: "Math",
@@ -61,7 +60,80 @@ const formulas = [
         range: 0.6
       }
     },
-    // Statistical
+    {
+      name: "RAND",
+      category: "Math",
+      description: "Generates a random number between 0 and 1.",
+      sheets: "=RAND()",
+      excel: "=RAND()",
+      example: "Random number in A1: =RAND()",
+      keywords: {
+        random: 0.9,
+        number: 0.8,
+        generate: 0.7,
+        math: 0.6
+      }
+    },
+    {
+      name: "ROUND",
+      category: "Math",
+      description: "Rounds a number to a specified number of digits.",
+      sheets: "=ROUND(number, num_digits)",
+      excel: "=ROUND(number, num_digits)",
+      example: "Round A1 to 2 decimals: =ROUND(A1, 2)",
+      keywords: {
+        round: 0.9,
+        number: 0.8,
+        decimal: 0.7,
+        digits: 0.6,
+        math: 0.5
+      }
+    },
+    {
+      name: "SUBTOTAL",
+      category: "Math",
+      description: "Calculates a subtotal for a range with various functions.",
+      sheets: "=SUBTOTAL(function_num, range)",
+      excel: "=SUBTOTAL(function_num, range)",
+      example: "Sum A1:A20 ignoring hidden rows: =SUBTOTAL(9, A1:A20)",
+      keywords: {
+        subtotal: 0.9,
+        sum: 0.8,
+        range: 0.7,
+        function: 0.6,
+        math: 0.5
+      }
+    },
+    {
+      name: "RANDBETWEEN",
+      category: "Math",
+      description: "Generates a random integer between two values.",
+      sheets: "=RANDBETWEEN(low, high)",
+      excel: "=RANDBETWEEN(low, high)",
+      example: "Random integer between 1 and 100 in A1: =RANDBETWEEN(1, 100)",
+      keywords: {
+        random: 0.9,
+        integer: 0.8,
+        number: 0.7,
+        between: 0.6,
+        math: 0.5
+      }
+    },
+    {
+      name: "CEILING",
+      category: "Math",
+      description: "Rounds a number up to the nearest multiple of significance.",
+      sheets: "=CEILING(number, significance)",
+      excel: "=CEILING(number, significance)",
+      example: "Round A1 up to nearest 10: =CEILING(A1, 10)",
+      keywords: {
+        ceiling: 0.9,
+        round: 0.8,
+        number: 0.7,
+        multiple: 0.6,
+        math: 0.5
+      }
+    },
     {
       name: "AVERAGE",
       category: "Statistical",
@@ -137,7 +209,21 @@ const formulas = [
         statistical: 0.5
       }
     },
-    // Text
+    {
+      name: "STDEV",
+      category: "Statistical",
+      description: "Calculates the standard deviation of a range.",
+      sheets: "=STDEV(range)",
+      excel: "=STDEV(range)",
+      example: "Standard deviation of G1:G20: =STDEV(G1:G20)",
+      keywords: {
+        standard: 0.9,
+        deviation: 0.8,
+        numbers: 0.7,
+        range: 0.6,
+        statistical: 0.5
+      }
+    },
     {
       name: "FIND",
       category: "Text",
@@ -228,7 +314,21 @@ const formulas = [
         string: 0.5
       }
     },
-    // Date
+    {
+      name: "TEXTJOIN",
+      category: "Text",
+      description: "Combines text from multiple ranges with a delimiter.",
+      sheets: "=TEXTJOIN(delimiter, ignore_empty, text1, [text2, ...])",
+      excel: "=TEXTJOIN(delimiter, ignore_empty, text1, [text2, ...])",
+      example: "Join A1:A5 with commas: =TEXTJOIN(\",\", TRUE, A1:A5)",
+      keywords: {
+        join: 0.9,
+        text: 0.8,
+        combine: 0.7,
+        delimiter: 0.6,
+        string: 0.5
+      }
+    },
     {
       name: "TODAY",
       category: "Date",
@@ -286,7 +386,20 @@ const formulas = [
         last: 0.6
       }
     },
-    // Financial
+    {
+      name: "WORKDAY",
+      category: "Date",
+      description: "Returns a date after a number of working days.",
+      sheets: "=WORKDAY(start_date, days, [holidays])",
+      excel: "=WORKDAY(start_date, days, [holidays])",
+      example: "Date 5 workdays after A1: =WORKDAY(A1, 5)",
+      keywords: {
+        workday: 0.9,
+        date: 0.8,
+        working: 0.7,
+        days: 0.6
+      }
+    },
     {
       name: "PMT",
       category: "Financial",
@@ -332,7 +445,36 @@ const formulas = [
         rate: 0.5
       }
     },
-    // Logical
+    {
+      name: "IRR",
+      category: "Financial",
+      description: "Calculates the internal rate of return for cash flows.",
+      sheets: "=IRR(values, [guess])",
+      excel: "=IRR(values, [guess])",
+      example: "IRR for cash flows in B1:B10: =IRR(B1:B10)",
+      keywords: {
+        irr: 0.9,
+        return: 0.8,
+        investment: 0.7,
+        financial: 0.6,
+        rate: 0.5
+      }
+    },
+    {
+      name: "PV",
+      category: "Financial",
+      description: "Calculates the present value of an investment.",
+      sheets: "=PV(rate, nper, pmt, [fv], [type])",
+      excel: "=PV(rate, nper, pmt, [fv], [type])",
+      example: "Present value of $1000 annual payments at 5% for 5 years: =PV(5%, 5, 1000)",
+      keywords: {
+        present: 0.9,
+        value: 0.8,
+        investment: 0.7,
+        financial: 0.6,
+        rate: 0.5
+      }
+    },
     {
       name: "IF",
       category: "Logical",
@@ -393,7 +535,21 @@ const formulas = [
         true: 0.5
       }
     },
-    // Lookup
+    {
+      name: "IFS",
+      category: "Logical",
+      description: "Evaluates multiple conditions and returns a value.",
+      sheets: "=IFS(logical_test1, value1, [logical_test2, value2, ...])",
+      excel: "=IFS(logical_test1, value1, [logical_test2, value2, ...])",
+      example: "Check C1 ranges: =IFS(C1>100, \"High\", C1>50, \"Medium\", TRUE, \"Low\")",
+      keywords: {
+        ifs: 0.9,
+        multiple: 0.8,
+        condition: 0.7,
+        logical: 0.6,
+        value: 0.5
+      }
+    },
     {
       name: "VLOOKUP",
       category: "Lookup",
@@ -454,7 +610,6 @@ const formulas = [
         table: 0.5
       }
     },
-    // Array
     {
       name: "FILTER",
       category: "Array",
@@ -499,7 +654,21 @@ const formulas = [
         array: 0.5
       }
     },
-    // Database
+    {
+      name: "SORT",
+      category: "Array",
+      description: "Sorts a range by specified columns.",
+      sheets: "=SORT(range, sort_column, is_ascending)",
+      excel: "=SORT(range, [sort_index], [sort_order])",
+      example: "Sort A1:B20 by column B ascending: =SORT(A1:B20, 2, TRUE)",
+      keywords: {
+        sort: 0.9,
+        order: 0.8,
+        range: 0.7,
+        column: 0.6,
+        array: 0.5
+      }
+    },
     {
       name: "QUERY",
       category: "Database",
@@ -530,7 +699,21 @@ const formulas = [
         data: 0.5
       }
     },
-    // Information
+    {
+      name: "DCOUNT",
+      category: "Database",
+      description: "Counts database records meeting criteria.",
+      sheets: "=DCOUNT(database, field, criteria)",
+      excel: "=DCOUNT(database, field, criteria)",
+      example: "Count records where A1:A20 = \"Yes\": =DCOUNT(A1:B20, \"B\", C1:D2)",
+      keywords: {
+        count: 0.9,
+        database: 0.8,
+        criteria: 0.7,
+        records: 0.6,
+        data: 0.5
+      }
+    },
     {
       name: "ISBLANK",
       category: "Information",
@@ -576,7 +759,21 @@ const formulas = [
         information: 0.5
       }
     },
-    // Conditional Formatting
+    {
+      name: "ISTEXT",
+      category: "Information",
+      description: "Checks if a value is text.",
+      sheets: "=ISTEXT(value)",
+      excel: "=ISTEXT(value)",
+      example: "Check if A1 is text: =ISTEXT(A1)",
+      keywords: {
+        text: 0.9,
+        check: 0.8,
+        value: 0.7,
+        cell: 0.6,
+        information: 0.5
+      }
+    },
     {
       name: "Conditional Formatting - Overdue Dates",
       category: "Conditional Formatting",
@@ -628,7 +825,6 @@ const formulas = [
         formatting: 0.5
       }
     },
-    // Advanced
     {
       name: "LET",
       category: "Advanced",
@@ -645,47 +841,33 @@ const formulas = [
       }
     },
     {
-      name: "RAND",
-      category: "Math",
-      description: "Generates a random number between 0 and 1.",
-      sheets: "=RAND()",
-      excel: "=RAND()",
-      example: "Random number in A1: =RAND()",
+      name: "LAMBDA",
+      category: "Advanced",
+      description: "Creates custom reusable functions (Excel 365, Sheets not supported).",
+      sheets: "Not supported; use Apps Script",
+      excel: "=LAMBDA(parameter, calculation)(arguments)",
+      example: "Excel: Double A1: =LAMBDA(x, x*2)(A1)",
       keywords: {
-        random: 0.9,
-        number: 0.8,
-        generate: 0.7,
-        math: 0.6
+        lambda: 0.9,
+        custom: 0.8,
+        function: 0.7,
+        advanced: 0.6,
+        calculation: 0.5
       }
     },
     {
-      name: "ROUND",
-      category: "Math",
-      description: "Rounds a number to a specified number of digits.",
-      sheets: "=ROUND(number, num_digits)",
-      excel: "=ROUND(number, num_digits)",
-      example: "Round A1 to 2 decimals: =ROUND(A1, 2)",
+      name: "MAP",
+      category: "Advanced",
+      description: "Applies a LAMBDA to each value in arrays (Excel 365, Sheets not supported).",
+      sheets: "Not supported; use ARRAYFORMULA",
+      excel: "=MAP(array1, [array2, ...], LAMBDA)",
+      example: "Excel: Double values in A1:A10: =MAP(A1:A10, LAMBDA(x, x*2))",
       keywords: {
-        round: 0.9,
-        number: 0.8,
-        decimal: 0.7,
-        digits: 0.6,
-        math: 0.5
-      }
-    },
-    {
-      name: "SUBTOTAL",
-      category: "Math",
-      description: "Calculates a subtotal for a range with various functions.",
-      sheets: "=SUBTOTAL(function_num, range)",
-      excel: "=SUBTOTAL(function_num, range)",
-      example: "Sum A1:A20 ignoring hidden rows: =SUBTOTAL(9, A1:A20)",
-      keywords: {
-        subtotal: 0.9,
-        sum: 0.8,
-        range: 0.7,
-        function: 0.6,
-        math: 0.5
+        map: 0.9,
+        apply: 0.8,
+        array: 0.7,
+        lambda: 0.6,
+        advanced: 0.5
       }
     }
   ];
@@ -722,5 +904,11 @@ const formulas = [
     empty: "isblank",
     assign: "let",
     generate: "rand",
-    decimal: "round"
+    decimal: "round",
+    integer: "randbetween",
+    standard: "stdev",
+    working: "workday",
+    return: "irr",
+    custom: "lambda",
+    apply: "map"
   };

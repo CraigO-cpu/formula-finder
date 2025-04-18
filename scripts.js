@@ -5,7 +5,7 @@ function findFormula() {
       return;
     }
   
-    const stopWords = ['i', 'need', 'to', 'in', 'a', 'the', 'for', 'with', 'of', 'and'];
+    const stopWords = ['i', 'need', 'to', 'in', 'a', 'the', 'for', 'with', 'of', 'and', 'is', 'are'];
     let tokens = input.split(/\s+/).filter(word => !stopWords.includes(word));
     tokens = tokens.map(word => synonyms[word] || word);
   
@@ -15,6 +15,9 @@ function findFormula() {
         if (formula.keywords[token]) {
           score += formula.keywords[token];
           score += formula.keywords[token] * (1 - index / tokens.length) * 0.2;
+          if (formula.category === "Conditional Formatting" && (token === "highlight" || token === "notification")) {
+            score += 0.3; // Boost for conditional formatting
+          }
         }
       });
       return { formula, score };
@@ -37,6 +40,7 @@ function findFormula() {
       card.className = 'result-card';
       card.innerHTML = `
         <h3>${formula.name}</h3>
+        <p><strong>Category:</strong> ${formula.category}</p>
         <p><strong>Description:</strong> ${formula.description}</p>
         <p><strong>Google Sheets:</strong> ${formula.sheets} <button class="copy-btn" onclick="copyToClipboard('${formula.sheets}')">Copy</button></p>
         <p><strong>Excel:</strong> ${formula.excel} <button class="copy-btn" onclick="copyToClipboard('${formula.excel}')">Copy</button></p>
